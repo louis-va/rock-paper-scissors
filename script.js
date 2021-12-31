@@ -1,57 +1,73 @@
-function computerPlay() {
-    let moveArray = ["rock", "paper", "scissors"];
-    let move = moveArray[Math.floor(Math.random() * moveArray.length)];
-    return move;
-}
-
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    if ((computerSelection == "rock" && playerSelection == "scissors") ||
-        (computerSelection == "scissors" && playerSelection == "paper") ||
-        (computerSelection == "paper" && playerSelection == "rock")) {
-        return "lose";
-    } else if ((playerSelection == "rock" && computerSelection == "scissors") ||
-        (playerSelection == "scissors" && computerSelection == "paper") ||
-        (playerSelection == "paper" && computerSelection == "rock")) {
-        return "win";
-    } else if (computerSelection == playerSelection) {
-        return "tie";
-    } else {
-        return "error";
-    }
-}
+'use strict';
 
 function game() {
+    let turn = 0;
     let playerScore = 0;
     let computerScore = 0;
     let playerSelection;
     let computerSelection;
-    let result;
 
-    for (let i = 1; i <= 5; i++){
-        console.log(`Round ${i}/5`)
+    const buttons = document.querySelectorAll('#game-btn');
+    const displayTurn = document.querySelector('#turn');
+    const displayPlayerScore = document.querySelector('#player-score');
+    const displayComputerScore = document.querySelector('#computer-score');
+    const displayFeedback = document.querySelector('#feedback');
 
-        playerSelection = prompt("Enter rock, paper or scissors : ");
-        computerSelection = computerPlay();
-
-        result = playRound(playerSelection, computerSelection);
-        
-        if (result == "lose") {
-            console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
-            computerScore++;
-        } else if (result == "win") {
-            console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
-            playerScore++;
-        } else if (result == "tie") {
-            console.log(`It's a tie! You both picked ${computerSelection}.`);
-        } else {
-            console.log("Wrong input!");
-        } 
+    function computerPlay() {
+        let moveArray = ["rock", "paper", "scissors"];
+        let move = moveArray[Math.floor(Math.random() * moveArray.length)];
+        return move;
     }
 
-    let gameResult = (playerScore > computerScore) ? "You won!" : (computerScore > playerScore) ? "You lost!" : "It's a tie!";
+    function playRound(buttonClicked) {
+        playerSelection = buttonClicked.getAttribute('data-value');
+        computerSelection = computerPlay();
+        
+        if ((computerSelection == "rock" && playerSelection == "scissors") ||
+            (computerSelection == "scissors" && playerSelection == "paper") ||
+            (computerSelection == "paper" && playerSelection == "rock")) {
+                computerScore++;
+                displayComputerScore.textContent = computerScore;
+                displayFeedback.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
+        } else if ((playerSelection == "rock" && computerSelection == "scissors") ||
+            (playerSelection == "scissors" && computerSelection == "paper") ||
+            (playerSelection == "paper" && computerSelection == "rock")) {
+                playerScore++;
+                displayPlayerScore.textContent = playerScore;
+                displayFeedback.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+        } else if (computerSelection == playerSelection) {
+            displayFeedback.textContent = `It's a tie! You both picked ${computerSelection}.`;
+        } else {
+            return "error";
+        }
+    }
 
-    console.log(`${gameResult} Your score : ${playerScore} | Computer score : ${computerScore}`)
+    function updateTurn() {
+        turn++;
+        displayTurn.textContent = turn;
+        if (turn == 5) endGame();
+    }
+
+    function endGame() {
+        buttons.forEach((button) => {
+            button.disabled = true; 
+        });
+
+        if (playerScore > computerScore) {
+            displayFeedback.textContent = "The game is over. You won!"
+        } else if (playerScore < computerScore) {
+            displayFeedback.textContent = "The game is over. You lost!"
+        } else {
+            displayFeedback.textContent = "The game is over. It's a tie!"
+        }
+    }
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {    
+            playRound(button);
+            updateTurn();
+        });
+    });
 }
 
 game();
