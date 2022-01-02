@@ -22,19 +22,19 @@ function game() {
     function playRound(buttonClicked) {
         playerSelection = buttonClicked.getAttribute('data-value');
         computerSelection = computerPlay();
-        
+
         if ((computerSelection == "rock" && playerSelection == "scissors") ||
             (computerSelection == "scissors" && playerSelection == "paper") ||
             (computerSelection == "paper" && playerSelection == "rock")) {
-                computerScore++;
-                displayComputerScore.textContent = computerScore;
-                displayFeedback.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
+            computerScore++;
+            displayComputerScore.textContent = computerScore;
+            displayFeedback.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
         } else if ((playerSelection == "rock" && computerSelection == "scissors") ||
             (playerSelection == "scissors" && computerSelection == "paper") ||
             (playerSelection == "paper" && computerSelection == "rock")) {
-                playerScore++;
-                displayPlayerScore.textContent = playerScore;
-                displayFeedback.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+            playerScore++;
+            displayPlayerScore.textContent = playerScore;
+            displayFeedback.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
         } else if (computerSelection == playerSelection) {
             displayFeedback.textContent = `It's a tie! You both picked ${computerSelection}.`;
         } else {
@@ -50,7 +50,7 @@ function game() {
 
     function endGame() {
         buttons.forEach((button) => {
-            button.disabled = true; 
+            button.disabled = true;
         });
 
         if (playerScore > computerScore) {
@@ -63,7 +63,7 @@ function game() {
     }
 
     buttons.forEach((button) => {
-        button.addEventListener('click', () => {    
+        button.addEventListener('click', () => {
             playRound(button);
             updateTurn();
         });
