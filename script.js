@@ -11,7 +11,8 @@ function game() {
     const displayTurn = document.querySelector('#turn');
     const displayPlayerScore = document.querySelector('#player-score');
     const displayComputerScore = document.querySelector('#computer-score');
-    const displayFeedback = document.querySelector('#feedback');
+    const displayFeedbackTitle = document.querySelector('#feedback-title');
+    const displayFeedbackSubtitle = document.querySelector('#feedback-subtitle');
 
     function computerPlay() {
         let moveArray = ["rock", "paper", "scissors"];
@@ -28,15 +29,18 @@ function game() {
             (computerSelection == "paper" && playerSelection == "rock")) {
             computerScore++;
             displayComputerScore.textContent = computerScore;
-            displayFeedback.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
+            displayFeedbackTitle.textContent = `You lose!`;
+            displayFeedbackSubtitle.textContent = `${computerSelection} beats ${playerSelection}.`;
         } else if ((playerSelection == "rock" && computerSelection == "scissors") ||
             (playerSelection == "scissors" && computerSelection == "paper") ||
             (playerSelection == "paper" && computerSelection == "rock")) {
             playerScore++;
             displayPlayerScore.textContent = playerScore;
-            displayFeedback.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+            displayFeedbackTitle.textContent = `You win!`;
+            displayFeedbackSubtitle.textContent = `${playerSelection} beats ${computerSelection}.`;
         } else if (computerSelection == playerSelection) {
-            displayFeedback.textContent = `It's a tie! You both picked ${computerSelection}.`;
+            displayFeedbackTitle.textContent = `It's a tie!`;
+            displayFeedbackSubtitle.textContent = `You both picked ${computerSelection}.`;
         } else {
             return "error";
         }
@@ -54,11 +58,14 @@ function game() {
         });
 
         if (playerScore > computerScore) {
-            displayFeedback.textContent = "The game is over. You won!"
+            displayFeedbackTitle.textContent = "You won!"
+            displayFeedbackSubtitle.textContent = "The game is over."
         } else if (playerScore < computerScore) {
-            displayFeedback.textContent = "The game is over. You lost!"
+            displayFeedbackTitle.textContent = "You lost!"
+            displayFeedbackSubtitle.textContent = "The game is over."
         } else {
-            displayFeedback.textContent = "The game is over. It's a tie!"
+            displayFeedbackTitle.textContent = "It's a tie!"
+            displayFeedbackSubtitle.textContent = "The game is over."
         }
     }
 

@@ -1,0 +1,123 @@
+/** RESET **/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p{
+    line-height: 1.5;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+/** GENERAL **/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+html {
+    font-size: 18px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #F2D0A4;
+}
+
+.turn {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: .7rem;
+    margin-bottom: 2rem;
+    padding: .5rem 1rem .4rem 1rem;
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 1rem;
+}
+
+.scores {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.score-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.score-title {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, .6);
+}
+
+.score {
+    font-size: 3rem;
+    margin-top: .1rem;
+}
+
+.buttons button {
+    padding: 3rem 2rem;
+    margin: .5rem .33rem;
+    font-size: 2.5rem;
+    border: none;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: .6rem;
+    box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: all ease-in .1s;
+}
+
+.buttons button:hover {
+    padding: 3.5rem 2.33rem;
+    margin: 0rem 0rem;
+    background-color: rgba(255, 255, 255, .7);
+    box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .1);
+}
+
+.buttons button:disabled,
+.buttons button[disabled]{
+    padding: 3rem 2rem;
+    margin: .5rem .33rem;
+    background-color: rgba(255, 255, 255, .3);
+    box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .1);
+    cursor: not-allowed;
+}
+
+.feedback-title {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, .8);
+    margin-top: 2rem;
+    font-weight: 700;
+}
+
+.feedback-subtitle {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, .6);
+    margin-top: 0.4rem;
+}

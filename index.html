@@ -5,15 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="game-btn" data-value="rock">rock</button>
-    <button id="game-btn" data-value="paper">paper</button>
-    <button id="game-btn" data-value="scissors">scissors</button>
-    <div>Turn <span id="turn">0</span>/5</div>
-    <div>Player score : <span id="player-score">0</span></div>
-    <div>Computer score : <span id="computer-score">0</span></div>
-    <div id="feedback"></div>
+    <section class="wrapper">
+        <div class="turn">Turn <span id="turn">0</span>/5</div>
+
+        <div class="scores">
+            <div class="score-wrapper">
+                <div class="score-title">Player</div>
+                <div id="player-score" class="score">0</div>
+            </div>
+            <div class="score-wrapper">
+                <div class="score-title">Computer</div>
+                <div id="computer-score" class="score">0</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="game-btn" data-value="rock">✊</button>
+            <button id="game-btn" data-value="paper">✋</button>
+            <button id="game-btn" data-value="scissors">✌️</button>
+        </div>
+        
+        <div id="feedback-title" class="feedback-title">The game is starting!</div>
+        <div id="feedback-subtitle" class="feedback-subtitle">Pick rock, paper or scissors.</div>
+    </section>
 </body>
 </html>
 <script src="script.js"></script>
